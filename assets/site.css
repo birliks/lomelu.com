@@ -1,0 +1,101 @@
+/* lomelu.com: tek stil dosyası. Renkler docs/brand.md "Renkler":
+   zemin krem, metin gece moru, bağlantı ve düğme koyu yeşil. */
+@font-face {
+  font-family: "Baloo 2";
+  src: url("/assets/fonts/baloo2-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --cream: #fff6e5;
+  --ink: #2e2553;
+  --green: #0f7a70;
+  --card: #fffdf8;
+  --line: #ecdfc6;
+  --display: "Baloo 2", ui-rounded, "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.15; margin: 0 0 0.45em; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+h3 { font-size: 1.25rem; line-height: 1.25; }
+p, ul { margin: 0 0 1em; }
+ul { padding-left: 1.25em; }
+li { margin-bottom: 0.4em; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--green); text-underline-offset: 0.15em; }
+a:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; border-radius: 6px; }
+
+.skip { position: absolute; left: -999px; top: 0; background: var(--card); padding: 0.5em 1em; z-index: 2; }
+.skip:focus { left: 8px; top: 8px; }
+
+.site-header, main, .site-footer { max-width: 66rem; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+
+.site-header { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding-top: 16px; padding-bottom: 16px; }
+.logo-image { height: 44px; width: auto; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-left: auto; }
+.site-header nav a { color: var(--ink); text-decoration: none; font-weight: 600; padding: 6px 0; border-bottom: 2px solid transparent; }
+.site-header nav a:hover, .site-header nav a[aria-current="page"] { border-bottom-color: var(--green); }
+.lang { border: 2px solid var(--green); border-radius: 999px; padding: 4px 14px; text-decoration: none; font-weight: 600; }
+
+main > section { padding: 36px 0; }
+
+.hero-brand { text-align: center; padding-top: 48px; }
+.hero-logo { width: min(420px, 80%); margin: 0 auto 24px; }
+.hero-brand .hero-text { max-width: 40rem; margin: 0 auto; }
+.hero-brand p { font-size: 1.2rem; }
+
+.hero-app { display: grid; gap: 28px; align-items: center; }
+.hero-app p { font-size: 1.2rem; }
+
+.shot { border-radius: 18px; border: 1px solid var(--line); background: var(--card); }
+
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.25em; }
+.hero-brand .buttons { justify-content: center; }
+.button { display: inline-block; background: var(--green); color: #fff; text-decoration: none; font-weight: 600; padding: 0.65em 1.4em; border-radius: 999px; }
+.button:hover { filter: brightness(1.08); }
+.button.quiet { background: transparent; color: var(--green); border: 2px solid var(--green); }
+
+.about, .text { max-width: 46rem; }
+.about.with-image, .text.with-image { display: grid; gap: 24px; align-items: center; max-width: none; }
+.about-image { width: 200px; }
+.card-image { width: 160px; border-radius: 28px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px !important; margin: 36px 0; }
+
+.cards, .features { display: grid; gap: 20px; }
+.item { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+.item p:last-child, .item ul:last-child { margin-bottom: 0; }
+.features .shot { margin-bottom: 16px; border-radius: 12px; }
+
+.faq { max-width: 46rem; }
+.faq .item { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 20px 0 6px; }
+
+.gallery { display: grid; gap: 16px; }
+.links { border-top: 1px solid var(--line); }
+
+.site-footer { display: flex; flex-wrap: wrap; gap: 8px 24px; padding-top: 24px; padding-bottom: 40px; font-size: 0.95rem; border-top: 1px solid var(--line); margin-top: 24px; }
+
+@media (min-width: 640px) {
+  .cards, .features, .gallery { grid-template-columns: repeat(2, 1fr); }
+  .about.with-image { grid-template-columns: 200px 1fr; gap: 36px; }
+  .text.with-image { grid-template-columns: 160px 1fr; gap: 32px; }
+}
+
+@media (min-width: 900px) {
+  .hero-app { grid-template-columns: 5fr 6fr; gap: 40px; }
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  .page-home .cards { grid-template-columns: repeat(4, 1fr); }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
